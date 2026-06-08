@@ -1,0 +1,4 @@
+◇ injected env (2) from .env // tip: ⌘ enable debugging { debug: true }
+◇ injected env (0) from .env // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+=== Kết nối thành công tới MongoDB ===
+Server is running on port 5000

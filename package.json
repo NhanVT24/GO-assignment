@@ -1,0 +1,15 @@
+{
+  "name": "go-assignment",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -n SERVER,CLIENT -c blue,green \"npm run dev --prefix Server\" \"npm run dev --prefix Client\"",
+    "install:all": "npm install --prefix Server && npm install --prefix Client",
+    "seed": "npm run seed --prefix Server",
+    "sync": "npm run sync --prefix Server",
+    "build": "npm run build --prefix Client"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
