@@ -1,0 +1,37 @@
+services:
+  mongo:
+    image: mongo:7
+    container_name: go-assignment-mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  server:
+    build:
+      context: ./Server
+    container_name: go-assignment-server
+    restart: unless-stopped
+    depends_on:
+      - mongo
+    environment:
+      PORT: 5000
+      MONGO_URI: mongodb://mongo:27017/go-assignment
+    ports:
+      - "5000:5000"
+
+  client:
+    build:
+      context: ./Client
+    container_name: go-assignment-client
+    restart: unless-stopped
+    depends_on:
+      - server
+    ports:
+      - "5173:5173"
+    environment:
+      VITE_API_BASE_URL: http://localhost:5000/api
+
+volumes:
+  mongo_data:

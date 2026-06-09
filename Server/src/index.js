@@ -5,6 +5,7 @@ require('dotenv').config();
 const connectDB = require('./config/database');
 const apiRoutes = require('./routes/api');
 const importCSVToMongoDB = require('./utils/csvParser');
+const { rebuildReportCache } = require('./services/reportService');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -23,6 +24,7 @@ app.get('/health', (req, res) => {
 const startServer = async () => {
   await connectDB();
   await importCSVToMongoDB();
+  await rebuildReportCache();
 
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
