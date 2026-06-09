@@ -145,12 +145,6 @@ Nếu muốn xoá luôn dữ liệu MongoDB đã lưu trong volume:
 docker compose -f docker-compose.prod.yml down -v
 ```
 
-### 5. Production khác gì dev
-
-- Client production build ra file tĩnh rồi phục vụ bằng Nginx
-- Server production chỉ cài và chạy dependency cần thiết
-- `docker-compose.prod.yml` dùng riêng cho deploy, không trộn với bản dev
-
 ## API
 
 - `GET /health` : Kiểm tra dự án có đang chạy hay không
@@ -160,4 +154,6 @@ docker compose -f docker-compose.prod.yml down -v
 
 ## Demo link
 
-Chua deploy.
+Client Deploy: [https://go-ass.vercel.app/](https://go-ass.vercel.app/)
+
+Server Deploy: [https://go-assignment-jpdv.onrender.com](https://go-assignment-jpdv.onrender.com/health)

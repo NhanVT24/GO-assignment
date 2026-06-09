@@ -79,7 +79,7 @@ const getScoreByRegistrationNumber = async (req, res) => {
     if (!/^\d+$/.test(registrationNumber)) {
       return res.status(400).json({
         success: false,
-        message: 'Số báo danh không được chưa ký tự không phải số',
+        message: 'Số báo danh chỉ được chứa số',
       });
     }
 
@@ -114,7 +114,7 @@ const getScoreByRegistrationNumber = async (req, res) => {
   } catch (error) {
     return res.status(500).json({
       success: false,
-      message: 'Không thể tra cứu điểm do lỗi',
+      message: 'Server lỗi khi lấy điểm thi',
       error: error.message,
     });
   }
@@ -159,7 +159,7 @@ const getTop10GroupA = async (req, res) => {
   } catch (error) {
     return res.status(500).json({
       success: false,
-      message: 'Không thể lấy danh sách top 10',
+      message: 'Server lỗi khi lấy danh sách top 10',
       error: error.message,
     });
   }
@@ -220,7 +220,7 @@ const getScoreStatistics = async (req, res) => {
   } catch (error) {
     return res.status(500).json({
       success: false,
-      message: 'Lỗi không thể lấy được điểm thống kê',
+      message: 'Server lỗi khi lấy điểm thống kê',
       error: error.message,
     });
   }
