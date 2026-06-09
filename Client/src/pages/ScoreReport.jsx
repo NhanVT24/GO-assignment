@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import ChartSection, { scoreLevels } from '../components/ChartSection'
 import { getScoreStatistics } from '../services/api'
 
-function Dashboard() {
+function ScoreReport() {
   const [statistics, setStatistics] = useState([])
   const [selectedLevel, setSelectedLevel] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -28,7 +28,7 @@ function Dashboard() {
       <div className="mb-[18px] flex items-end justify-between gap-4 max-md:grid max-md:grid-cols-1">
         <div>
           <span className="text-[26px] font-black text-white">
-            Feature report
+            Thống kê điểm theo môn
           </span>
           <p className="mt-1 font-bold text-slate-300">
             Thống kê số lượng thí sinh theo từng mức điểm và từng môn
@@ -80,4 +80,4 @@ function Dashboard() {
   )
 }
 
-export default Dashboard
+export default ScoreReport

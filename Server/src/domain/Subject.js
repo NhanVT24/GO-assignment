@@ -8,14 +8,14 @@ class Subject {
 
   static all() {
     return [
-      new Subject({ key: 'math', label: 'Toan', csvColumn: 'toan', required: true }),
-      new Subject({ key: 'literature', label: 'Ngu van', csvColumn: 'ngu_van', required: true }),
-      new Subject({ key: 'english', label: 'Ngoai ngu', csvColumn: 'ngoai_ngu', required: true }),
-      new Subject({ key: 'physics', label: 'Vat ly', csvColumn: 'vat_li' }),
-      new Subject({ key: 'chemistry', label: 'Hoa hoc', csvColumn: 'hoa_hoc' }),
-      new Subject({ key: 'biology', label: 'Sinh hoc', csvColumn: 'sinh_hoc' }),
-      new Subject({ key: 'history', label: 'Lich su', csvColumn: 'lich_su' }),
-      new Subject({ key: 'geography', label: 'Dia ly', csvColumn: 'dia_li' }),
+      new Subject({ key: 'math', label: 'Toán', csvColumn: 'toan', required: true }),
+      new Subject({ key: 'literature', label: 'Ngữ văn', csvColumn: 'ngu_van', required: true }),
+      new Subject({ key: 'english', label: 'Ngoại ngữ', csvColumn: 'ngoai_ngu', required: true }),
+      new Subject({ key: 'physics', label: 'Vật lý', csvColumn: 'vat_li' }),
+      new Subject({ key: 'chemistry', label: 'Hóa học', csvColumn: 'hoa_hoc' }),
+      new Subject({ key: 'biology', label: 'Sinh học', csvColumn: 'sinh_hoc' }),
+      new Subject({ key: 'history', label: 'Lịch sử', csvColumn: 'lich_su' }),
+      new Subject({ key: 'geography', label: 'Địa lý', csvColumn: 'dia_li' }),
       new Subject({ key: 'civic_education', label: 'GDCD', csvColumn: 'gdcd' }),
     ];
   }

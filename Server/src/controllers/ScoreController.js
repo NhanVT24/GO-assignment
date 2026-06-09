@@ -72,6 +72,17 @@ const buildStatisticsGroupStage = (subjects) => {
   return groupStage;
 };
 
+const applyCurrentSubjectLabels = (statistics) => {
+  const labelsBySubject = new Map(
+    Subject.all().map((subject) => [subject.key, subject.label])
+  );
+
+  return statistics.map((item) => ({
+    ...item,
+    label: labelsBySubject.get(item.subject) || item.label,
+  }));
+};
+
 const getScoreByRegistrationNumber = async (req, res) => {
   try {
     const registrationNumber = req.params.registrationNumber.trim();
@@ -180,7 +191,7 @@ const getScoreStatistics = async (req, res) => {
     const cachedReport = await ReportCache.findOne({ key: 'score_statistics' }).lean();
 
     if (cachedReport) {
-      cachedStatistics = cachedReport.data;
+      cachedStatistics = applyCurrentSubjectLabels(cachedReport.data);
 
       return res.json({
         success: true,

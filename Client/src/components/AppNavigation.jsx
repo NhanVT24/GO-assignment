@@ -1,7 +1,7 @@
 const tabs = [
-  { id: 'search', label: 'Tra cứu SBD' },
-  { id: 'chart', label: 'Biểu đồ điểm' },
-  { id: 'top', label: 'Top 10' },
+  { id: 'search', label: 'Tra cứu điểm' },
+  { id: 'chart', label: 'Thống kê điểm' },
+  { id: 'top', label: 'Top 10 khối A' },
 ]
 
 function AppNavigation({ activeTab, onTabChange }) {

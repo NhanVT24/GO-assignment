@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import AppHeader from './components/AppHeader'
 import AppNavigation from './components/AppNavigation'
-import Dashboard from './pages/Dashboard'
-import Home from './pages/Home'
+import ScoreReport from './pages/ScoreReport'
+import ScoreLookup from './pages/ScoreLookup'
 import TopStudents from './pages/TopStudents'
 
 function App() {
@@ -15,8 +15,8 @@ function App() {
         <AppNavigation activeTab={activeTab} onTabChange={setActiveTab} />
 
         <section className="mx-auto mt-[18px] mb-12 w-[min(1100px,calc(100%-32px))]">
-          {activeTab === 'search' && <Home />}
-          {activeTab === 'chart' && <Dashboard />}
+          {activeTab === 'search' && <ScoreLookup />}
+          {activeTab === 'chart' && <ScoreReport />}
           {activeTab === 'top' && <TopStudents />}
         </section>
       </div>

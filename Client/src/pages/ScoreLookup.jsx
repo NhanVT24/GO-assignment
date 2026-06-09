@@ -2,7 +2,7 @@ import { useState } from 'react'
 import ScoreCards from '../components/ScoreCards'
 import { getScoreByRegistrationNumber } from '../services/api'
 
-function Home() {
+function ScoreLookup() {
   const [registrationNumber, setRegistrationNumber] = useState('')
   const [student, setStudent] = useState(null)
   const [message, setMessage] = useState('')
@@ -90,4 +90,4 @@ function Home() {
   )
 }
 
-export default Home
+export default ScoreLookup
