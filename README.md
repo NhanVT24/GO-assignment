@@ -87,19 +87,6 @@ Lệnh này sẽ khởi động:
 docker compose down
 ```
 
-Nếu muốn xoá luôn dữ liệu MongoDB đã lưu trong volume:
-
-```bash
-docker compose down -v
-```
-
-### 5. File nào làm gì
-
-- `Client/Dockerfile`: cài dependencies và chạy Vite dev server
-- `Server/Dockerfile`: cài dependencies và chạy API Node.js
-- `docker-compose.yml`: nối client, server, mongo thành một hệ thống
-- `.dockerignore`: loại file thừa để build nhanh hơn
-
 ### 6. Lưu ý khi chạy bằng Docker
 
 - Frontend đang đọc API URL từ `VITE_API_BASE_URL`
@@ -137,12 +124,6 @@ Lệnh này sẽ khởi động:
 
 ```bash
 docker compose -f docker-compose.prod.yml down
-```
-
-Nếu muốn xoá luôn dữ liệu MongoDB đã lưu trong volume:
-
-```bash
-docker compose -f docker-compose.prod.yml down -v
 ```
 
 ## API
