@@ -5,6 +5,7 @@ function TopStudents() {
   const [topStudents, setTopStudents] = useState([])
   const [loading, setLoading] = useState(true)
   const [message, setMessage] = useState('')
+  const [isSmall, setIsSmall] = useState(false)
 
   useEffect(() => {
     const loadTopStudents = async () => {
@@ -19,6 +20,13 @@ function TopStudents() {
     }
 
     loadTopStudents()
+  }, [])
+
+  useEffect(() => {
+    const checkSize = () => setIsSmall(window.innerWidth < 768)
+    checkSize()
+    window.addEventListener('resize', checkSize)
+    return () => window.removeEventListener('resize', checkSize)
   }, [])
 
   return (
@@ -42,41 +50,35 @@ function TopStudents() {
           <table className="w-full min-w-[680px] border-collapse">
             <thead className="bg-[#1f2937]">
               <tr>
-                {['Hạng', 'Số báo danh', 'Toán', 'Vật lý', 'Hóa học', 'Tổng'].map(
-                  (heading) => (
-                    <th
-                      className="border-b border-slate-700 p-4 text-left text-sm font-extrabold text-slate-300"
-                      key={heading}
-                    >
-                      {heading}
-                    </th>
-                  )
-                )}
+                {(isSmall
+                  ? ['Hạng', 'Số báo danh', 'Tổng', 'Toán', 'Vật lý', 'Hóa học']
+                  : ['Hạng', 'Số báo danh', 'Toán', 'Vật lý', 'Hóa học', 'Tổng']
+                ).map((heading) => (
+                  <th
+                    className="border-b border-slate-700 p-4 text-left text-sm font-extrabold text-slate-300"
+                    key={heading}
+                  >
+                    {heading}
+                  </th>
+                ))}
               </tr>
             </thead>
             <tbody>
-              {topStudents.map((item, index) => (
-                <tr className="hover:bg-[#1f2937]" key={item._id || item.registration_number}>
-                  <td className="border-b border-slate-700 p-4 font-bold text-white">
-                    {index + 1}
-                  </td>
-                  <td className="border-b border-slate-700 p-4 font-bold text-white">
-                    {item.registration_number}
-                  </td>
-                  <td className="border-b border-slate-700 p-4 font-bold text-white">
-                    {item.math ?? '-'}
-                  </td>
-                  <td className="border-b border-slate-700 p-4 font-bold text-white">
-                    {item.physics ?? '-'}
-                  </td>
-                  <td className="border-b border-slate-700 p-4 font-bold text-white">
-                    {item.chemistry ?? '-'}
-                  </td>
-                  <td className="border-b border-slate-700 p-4 font-bold text-white">
-                    {item.totalGroupA ?? '-'}
-                  </td>
-                </tr>
-              ))}
+              {topStudents.map((item, index) => {
+                const cells = isSmall
+                  ? [index + 1, item.registration_number, item.totalGroupA ?? '-', item.math ?? '-', item.physics ?? '-', item.chemistry ?? '-']
+                  : [index + 1, item.registration_number, item.math ?? '-', item.physics ?? '-', item.chemistry ?? '-', item.totalGroupA ?? '-']
+
+                return (
+                  <tr className="hover:bg-[#1f2937]" key={item._id || item.registration_number}>
+                    {cells.map((val, i) => (
+                      <td key={i} className="border-b border-slate-700 p-4 font-bold text-white">
+                        {val}
+                      </td>
+                    ))}
+                  </tr>
+                )
+              })}
               {topStudents.length === 0 && (
                 <tr>
                   <td className="p-4 font-bold text-white" colSpan="6">
